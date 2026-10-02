@@ -1,0 +1,9 @@
+* text=auto
+*.py text eol=lf
+*.s text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.bat text eol=crlf
+*.bin binary

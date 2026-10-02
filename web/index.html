@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f1e9">
+    <title>MNIST / RISC-V · 手写数字实验</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="notebook">
+      <header class="masthead">
+        <a class="wordmark" href="/" aria-label="MNIST 手写数字实验首页">MNIST<span>/ RISC-V</span></a>
+        <div class="connection"><span id="connection-dot" class="connection-dot"></span><span id="connection">正在连接</span></div>
+      </header>
+
+      <main>
+        <div class="introduction">
+          <p class="eyebrow">EXPERIMENT 01 <span>手写数字实验</span></p>
+          <h1>写一个数字，<br>看看它如何被读懂。</h1>
+          <p class="description">在画板上写下 0–9，或选择一个真实的 MNIST 样本。</p>
+        </div>
+
+        <div class="workspace">
+          <section class="drawing-panel" aria-labelledby="drawing-title">
+            <div class="section-heading"><h2 id="drawing-title">01 <span>输入</span></h2><span class="small-note">鼠标 / 触屏</span></div>
+            <div class="canvas-shell">
+              <canvas id="canvas" width="336" height="336" tabindex="0" aria-label="手写数字画板；使用鼠标或触屏书写，Enter 识别，Esc 清空"></canvas>
+              <div id="canvas-hint" class="canvas-hint" aria-hidden="true"><span>0–9</span>在这里写一个数字</div>
+              <span class="canvas-corner" aria-hidden="true"></span>
+            </div>
+            <div class="drawing-actions">
+              <button id="recognize" class="button primary" type="button">识别数字 <span aria-hidden="true">↗</span></button>
+              <button id="clear" class="button secondary" type="button">清空</button>
+            </div>
+            <div class="sample-row">
+              <label for="sample-digit">试一个样本</label>
+              <select id="sample-digit" aria-label="选择 MNIST 样本数字">
+                <option value="0">数字 0</option><option value="1">数字 1</option>
+                <option value="2">数字 2</option><option value="3">数字 3</option>
+                <option value="4">数字 4</option><option value="5">数字 5</option>
+                <option value="6">数字 6</option><option value="7" selected>数字 7</option>
+                <option value="8">数字 8</option><option value="9">数字 9</option>
+              </select>
+              <button id="sample" class="sample-button" type="button">载入 <span aria-hidden="true">→</span></button>
+            </div>
+            <p id="status" class="status" role="status" aria-live="polite">画板已准备好。</p>
+          </section>
+
+          <section class="result-panel" aria-labelledby="result-title">
+            <div class="section-heading"><h2 id="result-title">02 <span>预测</span></h2><span id="result-state" class="small-note">等待输入</span></div>
+            <div class="prediction">
+              <div><p class="result-label">识别结果</p><div id="result-digit" class="result-digit" aria-live="polite">—</div></div>
+              <div class="preview-block"><canvas id="preview" width="28" height="28" aria-label="实际送入模型的 28×28 灰度图"></canvas><p>实际输入 <span>28 × 28</span></p></div>
+            </div>
+            <div class="distribution-heading"><h3>十个数字的预测分布</h3><span id="elapsed">— ms</span></div>
+            <ol id="classes" class="classes" aria-label="各数字的预测概率"></ol>
+            <p class="distribution-note">条形长度表示模型对各数字的相对判断。</p>
+          </section>
+        </div>
+      </main>
+
+      <footer><span>一块画板 · 十个数字</span><span><kbd>Enter</kbd> 识别 <i>/</i> <kbd>Esc</kbd> 清空</span></footer>
+    </div>
+  </body>
+</html>

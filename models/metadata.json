@@ -1,0 +1,22 @@
+{
+  "format_version": 2,
+  "architecture": [
+    784,
+    64,
+    10
+  ],
+  "activation": "ReLU",
+  "shift": 13,
+  "logit_scale": 0.002538620959967375,
+  "integer_formula": "h=clip((x@W1.T+B1)>>shift,0,255); scores=h@W2.T+B2",
+  "quantization": "per-hidden-neuron W1 int8; scale folded into W2; training-only bias calibration",
+  "layout": "W1 input-major (784,64); B1/W2/B2 unchanged",
+  "model_sha256": "36f701fd91b563ca2de1219edad436831c44c6116bb80aeb2f546e028fc27c03",
+  "model_bytes": 51144,
+  "quantized_test_accuracy": 0.9736,
+  "training_samples": 55000,
+  "validation_samples": 5000,
+  "test_samples": 10000,
+  "seed": 20261002,
+  "best_epoch": 14
+}
